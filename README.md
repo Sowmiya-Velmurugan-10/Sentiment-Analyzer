@@ -18,3 +18,7 @@ A simple .NET + Blazor WebAssembly app that analyzes sentiment using Azure Cogni
 1. Clone the repo
 2. Add `appsettings.json` or configure user secrets for Azure credentials
 3. Run backend API and Blazor frontend
+
+## Preview
+
+![Sentiment Analysis UI](assets/Sentiment-Analyzer.png)
