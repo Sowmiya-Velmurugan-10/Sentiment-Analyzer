@@ -21,9 +21,5 @@ A simple .NET + Blazor WebAssembly app that analyzes sentiment using Azure Cogni
 
 ## Preview
 
-![Sentiment Analysis UI](assets/Sentiment-Analyzer.png)
-
-## Preview
-
 ![Sentiment Analysis UI](Assets/Sentiment-Analyzer.png)
 
