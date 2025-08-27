@@ -1,0 +1,6 @@
+@Sentiment_Reviews_HostAddress = http://localhost:5051
+
+GET {{Sentiment_Reviews_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

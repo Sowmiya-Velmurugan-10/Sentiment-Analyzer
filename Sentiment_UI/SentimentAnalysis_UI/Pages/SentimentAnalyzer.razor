@@ -1,0 +1,39 @@
+@page "/"
+@inject SentimentAnalyserService SentimentService
+
+<h3 class="mb-4">Sentiment Analysis</h3>
+
+<div class="container mt-4">
+    <div class="mb-3">
+        <label for="reviewText" class="form-label"><strong>Enter your review:</strong></label>
+        <InputTextArea id="reviewText" class="form-control" rows="5" @bind-Value="InputText" placeholder="Type your review here..." />
+    </div>
+
+    <button class="btn btn-primary" @onclick="Analyze" disabled="@string.IsNullOrWhiteSpace(InputText)">Analyze</button>
+
+    @if (Response != null)
+    {
+        <div class="mt-4 p-4 border rounded bg-light">
+            <h5>Analysis Result</h5>
+            <p><strong>Sentiment:</strong> <span class="badge bg-info text-dark">@Response.Sentiment</span></p>
+            <p><strong>Confidence Scores:</strong></p>
+            <ul>
+                <li>Positive: @Response.Scores.Positive.ToString("P")</li>
+                <li>Neutral: @Response.Scores.Neutral.ToString("P")</li>
+                <li>Negative: @Response.Scores.Negative.ToString("P")</li>
+            </ul>
+            <p><strong>Key Phrases:</strong> @string.Join(", ", Response.KeyPhrases)</p>
+            @* <p><strong>Redacted Text:</strong> @Response.RedactedText</p> *@
+        </div>
+    }
+</div>
+
+@code {
+    private string InputText = string.Empty;
+    private ReviewResponse? Response;
+
+    private async Task Analyze()
+    {
+        Response = await SentimentService.AnalyzeAsync(InputText);
+    }
+}
